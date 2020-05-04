@@ -4,6 +4,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '../views/layout/Layout'
+import login from '../views/login'
 /**
  * hidden: true                   //当设置 true 的时候该路由不会再侧边栏出现 如401，login等页面，或者如一些编辑页面/edit/1
  * alwaysShow: true               //当你一个路由下面的 children 声明的路由大于1个时，自动会变成嵌套的模式--如组件页面
@@ -23,6 +24,33 @@ import Layout from '../views/layout/Layout'
 export const constantRouterMap = [
   {
     path: '/',
+    component: login,
+    name: 'login'
+  },
+  {
+    path: '/user',
+    component: Layout,
+    name: 'UserManagement',
+    redirect: 'userManagement',
+    meta: {
+      title: '用户管理',
+      breadcrumb: false,
+      icon: 'tree'
+    },
+    children: [
+      {
+        path: '/userManagement',
+        name: 'userManagement',
+        component: () => import('@/views/userManagement/index'),
+        meta: {
+          title: '用户管理',
+          icon: 'table'
+        }
+      }
+    ]
+  },
+  {
+    path: '/type',
     component: Layout,
     name: 'TypeManagement',
     redirect: 'typeManagement',

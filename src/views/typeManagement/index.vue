@@ -177,11 +177,13 @@ export default {
 }
 .twoBox {
   display: flex;
+  flex-wrap: wrap;
   .item {
     position: relative;
     margin-right: 10px;
     width: 50px;
     text-align: center;
+    margin-bottom: 10px;
     img {
       height: 40px;
       width: 40px;
